@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora VLSM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="calculator-card">
+
+      <div class="calculator-header">
+        <div class="logo-icon-small">⚡</div>
+        <h1>Calculadora VLSM</h1>
+        <p class="subtitle">Ingresa los datos y obtén el cálculo automático de subredes</p>
+      </div>
+
+      <form id="vlsmForm">
+
+        <div class="input-section">
+
+          <div class="input-row">
+            <div class="input-group">
+              <label>Dirección IP Base</label>
+              <input type="text" id="ipBase" placeholder="Ej: 192.168.10.0" required>
+            </div>
+
+            <div class="input-group">
+              <label>Prefijo (CIDR)</label>
+              <input type="number" id="cidrBase" placeholder="Ej: 24" min="1" max="30" required>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Cantidad de Subredes</label>
+            <input type="number" id="cantidadSubredes" min="1" required>
+          </div>
+
+          <div id="listaHosts" class="hosts-grid"></div>
+
+          <!-- BOTÓN AGREGAR CAMPOS (pequeño, sin animación) -->
+          <button type="button" id="btnAgregar" 
+                  class="btn-calculate btn-small"
+                  style="width:auto; padding:6px 12px; margin-top:10px; margin-bottom:10px;">
+            Agregar Campos
+          </button>
+
+          <!-- BOTÓN CALCULAR -->
+          <button type="button" id="btnCalcular" class="btn-calculate">
+            Calcular
+          </button>
+
+        </div>
+
+      </form>
+
+      <h1 style="margin-top: 35px; font-size:24px; text-align:center;">Resultados</h1>
+
+      <div class="results-container">
+        <table class="results-table" id="tablaResultados">
+          <thead>
+            <tr>
+              <th>Subred</th>
+              <th>Hosts Necesarios</th>
+              <th>Hosts Utilizables</th>
+              <th>Dirección de Red</th>
+              <th>1ra IP</th>
+              <th>Última IP</th>
+              <th>Broadcast</th>
+              <th>Máscara</th>
+              <th>Prefijo</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Script externo -->
+  <script src="scriptvlsm.js"></script>
+
+</body>
+</html>
