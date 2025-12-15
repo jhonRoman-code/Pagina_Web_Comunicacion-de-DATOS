@@ -1,13 +1,9 @@
-// Evitar que el formulario recargue la página
 document.getElementById("vlsmForm").addEventListener("submit", e => e.preventDefault());
 
 // Eventos de los botones
 document.getElementById("btnAgregar").addEventListener("click", agregarCampos);
 document.getElementById("btnCalcular").addEventListener("click", calcularVLSM);
 
-// ---------------------------------------------------------------------------
-//   GENERAR LOS CAMPOS DE HOSTS (SIEMPRE EN DOS COLUMNAS Y MÁS PEQUEÑOS)
-// ---------------------------------------------------------------------------
 function agregarCampos() {
   const cont = document.getElementById("cantidadSubredes").value;
   const zona = document.getElementById("listaHosts");
@@ -24,9 +20,6 @@ function agregarCampos() {
   }
 }
 
-// ---------------------------------------------------------------------------
-//   FUNCIONES DE CONVERSIÓN DE IP
-// ---------------------------------------------------------------------------
 function ipToNum(ip) {
   return ip.split('.').reduce((a, b) => (a << 8) + parseInt(b), 0);
 }
@@ -40,9 +33,6 @@ function cidrToMask(cidr) {
   return numToIp(mask);
 }
 
-// ---------------------------------------------------------------------------
-//   CÁLCULO VLSM PRINCIPAL
-// ---------------------------------------------------------------------------
 function calcularVLSM() {
   const ipBase = document.getElementById("ipBase").value;
   const cidrBase = parseInt(document.getElementById("cidrBase").value);
